@@ -7,11 +7,12 @@ test('Multiple element locator', async ({ page }) => {
     //const elements = await page.$$('//a');
     console.log(elements);
 
-    const products = await page.locator("//div[contains(@id,'tbodyid')]//div/h4/a");
-    await expect(products.first()).toBeVisible();
-
-    const productNames = await products.allTextContents();
-    console.log(productNames);
+    await page.waitForSelector('//div[contains(@id,"tbodyid")]//div/h4/a');
+    const products = await page.locator("//div[contains(@id,'tbodyid')]//div/h4/a").allTextContents();
+    
+    // await expect(products.last()).toBeVisible();
+    // const productNames = await products.allTextContents();
+    console.log(products);
 
 });
     
